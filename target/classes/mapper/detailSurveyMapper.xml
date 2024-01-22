@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="detailSurvey">
+
+	<select id="detailsurveyall" resultType="DetailSurveyVO"
+		parameterType="int">
+		select * from detailsurvey
+		where main_id = #{main_id}
+	</select>
+
+	<insert id="detailsurvemake" parameterType="DetailSurveyVO">
+		insert into
+		detailsurvey
+		(detail_content, main_id,detail_category) values
+		(#{detail_content},#{main_id},#{detail_category})
+	</insert>
+
+	<update id="updateDetailSurvey" parameterType="DetailSurveyVO">
+		UPDATE detailsurvey
+		SET
+		detail_content = #{detail_content},
+		detail_answer = #{detail_answer},
+		detail_category = #{detail_category}
+		WHERE detail_id = #{detail_id}
+	</update>
+
+
+	<!-- 상세 서베이 여러개 삭제 -->
+	<delete id="deletes" parameterType="int">
+		delete from detailsurvey
+		where detail_id = #{delete_id}
+	</delete>
+
+	<!-- 상세 서베이 전체 삭제 -->
+	<delete id="deleteall" parameterType="int">
+		delete from detailsurvey
+		where main_id = #{main_id}
+	</delete>
+
+	<select id="getDetailSurveyByMainId" parameterType="int"
+		resultType="DetailSurveyVO">
+		select * from detailsurvey
+		where main_id = #{main_id}
+	</select>
+
+
+	<select id="getDetailSurveyByDetailId" parameterType="int"
+		resultType="DetailSurveyVO">
+		select * from detailsurvey
+		where detail_id = #{detail_id}
+	</select>
+
+</mapper>
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context
+		http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+	<!-- Root Context: defines shared resources visible to all other web components 
+		<context:property-placeholder location="classpath:db.properties" /> -->
+	<context:property-placeholder
+		location="classpath:db.properties" />
+
+	<!-- myBatis의 싱글톤 객체 생성 -->
+	<bean id="my" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg ref="config"></constructor-arg>
+	</bean>
+
+	<!-- myBatis의 설정 객체 생성 -->
+	<bean id="config" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dbcp"></property>
+		<property name="configLocation"
+			value="classpath:mybatis-config.xml"></property>
+	</bean>
+	<!-- 파일 업로드 설정 -->
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<!-- 파일 업로드 설정 -->
+		<property name="maxUploadSize" value="10485760" /> <!-- 10MB, 필요에 따라 조절 -->
+	</bean>
+
+	<bean id="propertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location" value="classpath:db.properties" />
+	</bean>
+
+	<!-- dbcp의 싱글톤 객체 생성 -->
+	<!-- db프로그램의 2단계까지 담당. driver설정, db연결 -->
+	<!-- db.properties 파일에 value를 저장해서 value값이 사라짐 -->
+	<bean id="dbcp" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="${jdbc.driver}"></property>
+		<property name="url" value="${jdbc.url}"></property>
+		<property name="username" value="${jdbc.username}"></property>
+		<property name="password" value="${jdbc.password}"></property>
+	</bean>
+
+<!-- 해당부분 customUserDetailsService         MemberVO member = memberDAO.memberLogin2(member_name);
+해당부분이 null로 나타나 강제로 생성  -->
+<context:component-scan base-package="com.mini" />	
+<bean id="customUserDetailsService" class="com.mini.security.CustomUserDetailsService" />
+<bean id="memberDAO" class="com.mini.member.MemberDAO" />
+
+<!-- 이메일 인증 관련 등록 -->
+<!-- username과 password의 value에는 사용할 자신의 네이버 ID와 비밀번호 -->
+	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<property name="host" value="smtp.gmail.com"/>
+	    <property name="port" value="587"/>
+	    <property name="username" value="cha1478916"/>
+	    <property name="password" value="fvsj prbx seye admf"/>
+
+	    <property name="javaMailProperties">
+		    <props>
+
+		     <prop key="mail.smtp.auth">true</prop>
+      		 <prop key="mail.smtp.starttls.enable">true</prop>
+
+      		 <prop key="mail.smtp.ssl.protocols">TLSv1.2</prop>
+<!--       네이버 (SSL 필요) -->
+<!-- 		      <prop key="mail.smtp.auth">true</prop> -->
+<!-- 		      <prop key="mail.smtp.starttls.enable">true</prop> -->
+<!-- 		      <prop key="mail.smtps.checkserveridentity">true</prop> -->
+<!-- 		      <prop key="mail.smtps.ssl.trust">*</prop> -->
+<!-- 		      <prop key="mail.debug">true</prop> -->
+<!-- 		      <prop key="mail.smtp.socketFactory.class">javax.net.ssl.SSLSocketFactory</prop> -->
+		     </props>
+	     </property>
+	</bean>
+    
+</beans>

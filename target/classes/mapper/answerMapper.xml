@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="answer">
+
+	<insert id="answerInsert" parameterType="AnswerVO">
+		insert into answer
+		(answer,member_id,detail_id,member_name,main_id) values
+		(#{answer},#{member_id},#{detail_id},#{member_name},#{main_id})
+	</insert>
+	
+	<select id="getAnswerByMemberName" parameterType="String" resultType="AnswerVO">
+		select * from answer
+		where member_name = #{member_name}
+	</select>
+	
+	<select id="getAnswerByMainId" parameterType="int" resultType="AnswerVO">
+		select * from answer
+		where detail_id = #{detail_id}
+	</select>
+	
+	<select id="getAnswerListByMainId" parameterType="int" resultType="AnswerListVO">
+		select * from selectanswerlist
+		where detail_id = #{detail_id}
+	</select>
+
+	<insert id="answerListInsert" parameterType="AnswerListVO">
+		insert into selectanswerlist
+		(answerlist_id,answerlist_answer,detail_id) values
+		(#{answerlist_id},#{answerlist_answer},#{detail_id})
+	</insert>
+
+</mapper>
+
+
+
+
+
+
+
+
+

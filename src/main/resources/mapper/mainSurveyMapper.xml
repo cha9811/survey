@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mainSurvey">
+
+	<select id="mainsurveyall" resultType="SurveyVO">
+		select * from mainsurvey
+	</select>
+
+	<select id="getBySurveyByMainId" parameterType="int" resultType="SurveyVO">
+		select * from mainsurvey
+		where main_id = #{main_id}
+	</select>
+
+	<insert id="surveymake" parameterType="SurveyVO">
+		insert into mainsurvey
+		(main_title,main_content,main_category,main_reward,main_limit,main_start_time,main_end_time,use_time,member_name)
+		values
+		(#{main_title},#{main_content},#{main_category},#{main_reward},#{main_limit},#{main_start_time},#{main_end_time},#{use_time},#{member_name})
+	</insert>	
+	
+	<delete id="delete" parameterType="int">
+		delete from mainsurvey
+		where
+		main_id = #{main_id}
+	</delete>
+
+
+</mapper>
+
+
+
+
+
+
+
+
+
+

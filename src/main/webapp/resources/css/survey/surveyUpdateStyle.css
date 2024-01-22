@@ -1,0 +1,116 @@
+@charset "UTF-8";
+
+/* 전체 페이지에 대한 기본 스타일 */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+}
+
+h2, h4 {
+    color: #333;
+}
+
+/* 테이블 스타일 */
+table {
+    width: 100%;
+    border-collapse: separate;
+     border-spacing: 0 10px; /* 수직 간격 설정 */
+    margin-bottom: 20px;
+}
+
+
+
+th, td {
+    text-align: left;
+    padding: 8px;
+    width: 510px;
+}
+
+
+button {
+    background-color: rgb(46, 46, 46);
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button a {
+    color: white; /* 글씨 색상을 흰색으로 설정 */
+    text-decoration: none; /* 밑줄 제거 */
+}
+
+
+h2 {
+	padding-bottom: 10px;
+	border-bottom: 1px solid gray;
+}
+
+/* 옵션 추가 관련 스타일 */
+input[type="text"] {
+    padding: 5px;
+/*     margin-right: 10px; */
+    border-radius: 4px;
+    border: 1px solid #000000;
+}
+input {
+    padding: 5px;
+    margin-right: 10px;
+    border-radius: 4px;
+    border: 1px solid #000000;
+}
+/* 동적 입력 필드 스타일 */
+.dynamic-input {
+    padding: 5px;
+    margin-top: 10px;
+    border-radius: 4px;
+    margin-left: 395px;
+}
+
+.dynamic-input2 {
+    padding: 5px;
+    margin-top: 10px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+
+}
+
+.option-input2 {
+    padding: 5px;
+    margin-top: 10px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+}
+
+.option-input {
+    padding: 5px;
+    margin-top: 10px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+}
+.additional-class-for-A {
+   margin-left: 0px;
+}
+/* .additional-class-for-B { */
+/*     margin-left: 425px; */
+/* } */
+
+.button-container {
+    text-align: center; /* 텍스트 정렬을 중앙으로 설정 */
+    margin: auto; 
+}
+.deleted {
+    opacity: 0.5; /* 투명도 감소로 삭제된 것처럼 보임 */
+}
+.control-td {
+    width: 30%; /* 또는 원하는 너비 */
+    /* 추가적인 스타일링 */
+}
+
+.input-td {
+    width: 50%; /* 또는 원하는 너비 */
+    /* 추가적인 스타일링 */
+}

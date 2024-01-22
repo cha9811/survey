@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="notice">
+
+	<select id="noticeAll" resultType="noticeVO">
+		select * from notice
+	</select>
+
+	<insert id="noticeMake" parameterType="noticeVO">
+		insert into notice
+		(notice_id,notice_title,notice_content,notice_create_time,writer) values
+		(#{notice_id},#{notice_title},#{notice_content},now(),'관리자')
+	</insert>
+	
+	<select id="getNoticeById" resultType="noticeVO" parameterType="int">
+		select * from notice
+		where notice_id = #{notice_id}
+	</select>
+
+	<delete id="noticeDelete" parameterType="int">
+		delete from notice
+		where notice_id = #{notice_id}
+	</delete>
+
+	<update id="noticeUpdate" parameterType="noticeVO">
+		update notice
+		set
+		notice_title = #{notice_title},
+		notice_content = #{notice_content},
+		notice_modifi_time = now()
+		where notice_id = #{notice_id}
+	</update>
+
+</mapper>
+
+
+
+
+
+
+
+
+
+

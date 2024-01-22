@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="gifticon">
+
+	<select id="gifticonAll" parameterType="String" resultType="GifticonVO">
+		select * from gifticon
+		where goods_content = #{goods_content}
+		AND member_id IS NULL
+	</select>
+
+	<insert id="gifticonInsert" parameterType="GifticonVO">
+		insert into gifticon
+		(goods_content,gifticon_img,date) values
+		(#{goods_content},#{gifticon_img},now())
+	</insert>
+	
+	<select id="gifticonAllByMemberId" parameterType="int" resultType="GifticonVO">
+		select * from gifticon
+		where member_id = #{member_id}
+	</select>
+	
+	<select id="gifticonByid" parameterType="int" resultType="GifticonVO">
+		select * from gifticon
+		where gifticon_id = #{gifticon_id}
+	</select>
+	
+	<update id="gifticonBuy" parameterType="GifticonVO" >
+		update gifticon
+		set 
+		member_id = #{member_id}
+		where gifticon_id = #{gifticon_id}
+	</update>
+	
+	<delete id="gifticondelete" parameterType="int">
+		delete from gifticon
+		where gifticon_id = #{gifticon_id}
+	</delete>
+
+
+</mapper>
+
+
+
+
+
+
+
+
+
+

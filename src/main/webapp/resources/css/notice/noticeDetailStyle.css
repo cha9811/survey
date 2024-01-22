@@ -1,0 +1,72 @@
+@charset "UTF-8";
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.select-grup {
+    margin: 0 auto;
+    max-width: 1000px;
+    min-height: 600px;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.select-grup td {
+    display: block;
+    margin-bottom: 15px;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.select-grup td:first-child {
+    font-weight: bold;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.button {
+    text-align: center;
+    margin-top: 20px;
+}
+
+button, .button input[type="submit"] {
+     background-color: rgb(46, 46, 46);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    text-decoration: none;
+    display: inline-block;
+}
+
+button a, .button input[type="submit"] {
+    color: white;
+    text-decoration: none;
+}
+
+
+
+.button-group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.button, .button-black {
+    margin: 0 10px; /* 버튼 사이의 간격 */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}

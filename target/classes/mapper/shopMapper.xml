@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="shop">
+
+	<select id="goodsAll" resultType="ShopVO">
+		select * from goods
+	</select>
+
+	<insert id="goodsInsert" parameterType="ShopVO">
+		insert into goods
+		(goods_price,goods_content,goods_brand,goods_img) values
+		(#{goods_price},#{goods_content},#{goods_brand},#{goods_img})
+	</insert>
+	
+	<update id="goodsUpdate" parameterType="ShopVO">
+		update goods
+		set
+		goods_price = #{goods_price},
+		goods_content = #{goods_content},
+		goods_img = #{goods_img},
+		goods_brand = #{goods_brand}
+		where goods_id = #{goods_id}
+	</update>
+
+	<select id="getgoodsByName" resultType="ShopVO" parameterType="String">
+		select * from goods
+		where goods_content = #{goods_content}
+	</select>
+	
+	<delete id="goodsDelete" parameterType="int">
+		delete from goods
+		where goods_id = #{goods_id}
+	</delete>
+	
+
+<!-- 	<delete id="noticeDelete" parameterType="int"> -->
+<!-- 		delete from goods -->
+<!-- 		where notice_id = #{notice_id} -->
+<!-- 	</delete> -->
+
+<!-- 	<update id="noticeUpdate" parameterType="ShopVO"> -->
+<!-- 		update goods -->
+<!-- 		set -->
+<!-- 		notice_title = #{notice_title}, -->
+<!-- 		notice_content = #{notice_content}, -->
+<!-- 		notice_modifi_time = now() -->
+<!-- 		where notice_id = #{notice_id} -->
+<!-- 	</update> -->
+
+</mapper>
+
+
+
+
+
+
+
+
+
