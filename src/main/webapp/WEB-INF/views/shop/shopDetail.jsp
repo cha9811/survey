@@ -81,11 +81,13 @@
 							<input type="hidden" name="gifticon_id" value="${vo.gifticon_id}" />
 							<button type="submit">구매하기</button>
 						</form>
+						<sec:authorize access="hasAnyRole('ROLE_MASTER')">
 						<form action="/survey/gifticonDelete">
 							<sec:csrfInput />
 							<input type="hidden" name="gifticon_id" value="${vo.gifticon_id}" />
 							<button type="submit">삭제하기</button>
 						</form>
+						</sec:authorize>
 					</td>
 				</div>
 		

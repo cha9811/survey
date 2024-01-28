@@ -16,7 +16,6 @@
 
 </head>
 <body>
-	<br>
 	<div class="joinForm">
 		<h1 style="text-align: center;">회원가입</h1>
 		<hr>
@@ -121,15 +120,13 @@
 			</table>
 			<br>
 			<div class="button-container" style="text-align: center;">
-				<input type="button" id="cancel" value="취소">
+				<input type="button" id="cancel" class="btn" value="취소">
 				<button type="submit" id="inserBtn" class="btn">가입</button>
 			</div>
 		</form>
-
+		<br><br>
 	</div>
-	<br>
-	<br>
-	<br>
+
 </body>
 
 <script>
@@ -170,7 +167,6 @@ $(document).ready(function() {
     });
 });
 
-//전체 form 제출시 사용
 function validateForm() {
     var username = document.getElementById("member_name").value;
     var password = document.getElementById("member_password").value;
@@ -180,36 +176,25 @@ function validateForm() {
         alert("아이디를 입력해주세요.");
         return false;
     }
-    
-    // 아이디 유효성 검사
     if (username.length < 4 || username.length > 20) {
         alert("아이디는 4자 이상 20자 이하이어야 합니다.");
         return false;
     }
-
-    // 비밀번호 유효성 검사
     if (password.length < 8 ||password.length > 15) {
         alert("비밀번호는 8자 이상 15자리 이하여야 합니다.");
-    	console.log("check_8");
         return false;
     }
-
-    // 비밀번호 확인 검사
     if (password !== confirmPassword) {
         alert("비밀번호가 일치하지 않습니다.");
-        console.log("check_=");
         return false;
     }
-
-    // 모든 검사를 통과하면 true 반환
     return true;
 }
 
 // 아이디 중복 체크
 function checkUsernameAvailability(showAlert) {
     return new Promise(function(resolve, reject) {
-        var username = $('#member_name').val().trim(); // 공백 제거
-     // 아이디가 비어있거나 너무 짧은 경우 경고 표시
+        var username = $('#member_name').val().trim();
         if (!username || username.length < 4 || username.length > 20) {
             if (showAlert) {
                 alert("아이디는 4자 이상 20자 이하이어야 합니다.");
@@ -220,30 +205,25 @@ function checkUsernameAvailability(showAlert) {
         if (username.length > 20) {
             if (showAlert) {
                 alert("아이디는 20자 이하이어야 합니다.");
-            	console.log("check_if20");
-
             }
             isUsernameAvailable = false; // 중복 체크 결과를 실패로 설정
             resolve(); // Promise를 여기서 종료
             return;
         }
-        
         $.ajax({
-            url: '/survey/checkUsername', // 서버의 URL
+            url: '/survey/checkUsername',
             type: 'GET',
             dataType: 'json',
             data: { member_name: username },
             success: function(response) {
-                isUsernameAvailable = response; // 중복 체크 결과 저장
-                resolve(response); // 수정됨: 결과를 resolve로 반환
+                isUsernameAvailable = response;
+                resolve(response); 
 
                 if (showAlert) {
                     if (response) {
-                        alert("사용 가능한 아이디입니다."); // 중복 체크 통과 시 알림
-                    	console.log("ajax_if");
+                        alert("사용 가능한 아이디입니다.");
                     } else {
-                        alert("이미 사용 중인 아이디입니다."); // 중복 체크 실패 시 알림
-                    	console.log("ajax_else");
+                        alert("이미 사용 중인 아이디입니다.");
                     }
                 }
                 resolve();
@@ -252,7 +232,7 @@ function checkUsernameAvailability(showAlert) {
                 alert("오류 발생: " + error);
             	console.log("ajax_error");
 
-                isUsernameAvailable = false; // 중복 체크 실패
+                isUsernameAvailable = false; 
                 resolve();
             }
         });

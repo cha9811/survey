@@ -39,27 +39,19 @@ public class GifticonController {
 
 	}
 
-	// 기프티콘 삭제
+	// 굿즈샵 기프티콘 삭제
 	@RequestMapping("/gifticonDelete/{gifticon_id}")
-	public String gifticonDelete(@PathVariable("gifticon_id") int gifticon_id, Model model) {
-		System.out.println(gifticon_id);
-		System.out.println("나");
+	public String gifticonDelete(@PathVariable("gifticon_id") int gifticon_id) {
 		gifticonService.gifticonDelete(gifticon_id);
 		return "redirect:/shop";
 	}
 
-	// 기프티콘 삭제
+	// 내 기프티콘 삭제
 	@RequestMapping("/myGifticonDelete/{gifticon_id}")
 	public String myGifticonDelete(@PathVariable("gifticon_id") int gifticon_id, Model model) {
-		System.out.println(gifticon_id);
-		System.out.println("너");
 		gifticonService.gifticonDelete(gifticon_id);
 		return "redirect:/mypage";
 	}
 
-	@RequestMapping("/shop/buyFail")
-	public String buyFailPage() {
-		return "shop/buyFail";
-	}
 
 }

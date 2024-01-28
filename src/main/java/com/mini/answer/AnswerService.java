@@ -42,7 +42,6 @@ public class AnswerService {
 	                if (values != null) {
 	                    String combinedValues = String.join(",", values); // Combine all checkbox values
 
-	                    int detailId = Integer.parseInt(paramName.substring("detail_answer_".length()));
 	                    AnswerVO vo = new AnswerVO();
 	                    vo.setAnswer(combinedValues);
 	                    vo.setMember_id(memberInfo.getMember_id());

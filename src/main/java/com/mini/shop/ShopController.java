@@ -99,9 +99,10 @@ public class ShopController {
 	
 	@RequestMapping("/shopGoodsUpload/{name}")
 	public String shopGoodsUpload(@PathVariable("name") String name,HttpServletRequest request, @RequestParam("files") MultipartFile[] files, Model model) throws UnsupportedEncodingException{
-//		한글문자 인코딩 에러로 인한 추가코드		
-	    String encodedName = URLEncoder.encode(name, StandardCharsets.UTF_8.toString());
+//		한글문자 인코딩 에러로 인한 추가코드	
 	    // URLEncoder.encode 메서드는 공백을 +로 인코딩합니다. 하지만 URL 경로의 일부로 사용될 때는 공백을 %20으로 인코딩해야 올바르게 해석됩니다.'+' 문자를 '%20'로 치환 인코딩 방식이 스타벅스+아메리카노
+
+	    String encodedName = URLEncoder.encode(name, StandardCharsets.UTF_8.toString());
 	    encodedName = encodedName.replaceAll("\\+", "%20");
 	    for (MultipartFile file : files) {
 	        // 각 파일에 대한 GifticonVO 생성
@@ -114,6 +115,7 @@ public class ShopController {
 	    }
 		return "redirect:/shopDetail/"+encodedName;
 	}
+	
 	
 
 

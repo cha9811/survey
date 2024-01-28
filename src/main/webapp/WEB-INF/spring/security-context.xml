@@ -82,22 +82,17 @@
 		<security:intercept-url
 			pattern="shopGoodsUpload" access="hasRole('ROLE_MASTER')" />
 
-		<!-- 내가만든 핸들러 설정 회원가입 정상작동 확인시 해당부분 주석풀기!! -->
+		
 		<security:access-denied-handler
 			ref="customAccessDenied" />
 
-		<!-- 엑세스 에러시 해당 코드 작동,commencontoller -->
-		<!-- <security:access-denied-handler -->
-		<!-- error-page="/survey/accessError" /> -->
-		<!-- authentication-failure-url="/loginPage" -->
+
 
 		<security:form-login login-page="/loginPage"
 			username-parameter="member_name" password-parameter="member_password"
 			authentication-failure-url="/loginPage?message=error"
 			authentication-success-handler-ref="customLoginSuccess"
 			default-target-url="/notice" always-use-default-target="true" />
-		<!-- 로그인후 이동페이지 확인하기 -->
-		<!-- 로그아웃부분 확인해서 바꾸기 -->
 		<security:logout logout-url="/logout" />
 	</security:http>
 
@@ -108,12 +103,7 @@
 
 			<security:password-encoder
 				ref="bcryptPasswordEncoder" />
-			<!-- <security:user-service> -->
-			<!-- <security:user name="member" password="{noop}member" authorities="ROLE_MEMBER" 
-				/> -->
-			<!-- <security:user name="admin" password="{noop}admin" authorities="ROLE_ADMIN, 
-				ROLE_MEMBER" /> -->
-			<!-- </security:user-service> -->
+			
 
 		</security:authentication-provider>
 	</security:authentication-manager>

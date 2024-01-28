@@ -114,17 +114,6 @@ public class MemberController {
 		System.out.println(index);
 		return index;
 	}
-
-//	public void sendIDEmail(@RequestParam("email") String email) {
-//	void 반환 타입:
-//		컨트롤러 메서드가 void를 반환하는 경우, 스프링은 기본적으로 HTTP 상태 코드 200 OK를 반환합니다. 그러나 이 경우에는 응답 본문이 없습니다.
-//		AJAX 요청은 서버로부터 어떤 형태의 응답을 기대합니다. 때때로, 응답 본문이 없는 경우(특히 dataType이 지정된 경우), 클라이언트 측 JavaScript나 jQuery에서 이를 오류로 해석할 수 있습니다.
-//		ResponseEntity<?> 반환 타입:
-//		ResponseEntity<?>를 사용하는 경우, 개발자는 응답 본문, HTTP 상태 코드, 헤더 등을 명시적으로 제어할 수 있습니다. 이는 클라이언트에게 보다 구체적인 응답을 제공하는 데 유용합니다.
-//		AJAX 요청의 경우, ResponseEntity를 사용하여 명시적인 응답 본문(예를 들어, JSON 객체)과 함께 상태 코드를 반환함으로써 클라이언트 측에서 예상하는 응답 형식을 충족시킬 수 있습니다.
-//		따라서, void 반환 타입의 메서드에서 AJAX 요청이 예상하는 응답 형식을 충족시키지 못해 오류가 발생했을 가능성이 있습니다. 반면, ResponseEntity<?>를 사용하면 클라이언트 측에서 필요로 하는 명시적인 응답(상태 코드, 응답 본문 등)을 제공할 수 있으므로, 이러한 문제를 해결할 수 있습니다.
-//		이러한 이유로, AJAX 요청을 처리하는 서버 측에서는 ResponseEntity 또는 유사한 메커니즘을 사용하여 클라이언트에 명확한 응답을 제공하는 것이 좋습니다
-	// id인증받기
 	
 	
 	@PostMapping("/sendEmailID")
@@ -133,7 +122,6 @@ public class MemberController {
 			email = email + "@naver.com";
 			int checknum = memberService.sendIDEmail(email);
 			session.setAttribute("authCode", checknum);
-			//인증보기용
 			System.out.println("저장된 authCode: " + session.getAttribute("authCode"));
 			return ResponseEntity.ok(checknum);
 		} else {

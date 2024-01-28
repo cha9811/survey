@@ -6,17 +6,10 @@ public class DetailSurveyVO {
 	private String detail_content;
 	private String detail_answer;
 	private int main_id;
-	private int member_id;
 	private String detail_category;
 	
 	
 	
-	@Override
-	public String toString() {
-		return "DetailSurveyVO [detail_id=" + detail_id + ", detail_content=" + detail_content + ", detail_answer="
-				+ detail_answer + ", main_id=" + main_id + ", member_id=" + member_id + ", detail_category="
-				+ detail_category + "]";
-	}
 	public String getDetail_category() {
 		return detail_category;
 	}
@@ -47,12 +40,12 @@ public class DetailSurveyVO {
 	public void setMain_id(int main_id) {
 		this.main_id = main_id;
 	}
-	public int getMember_id() {
-		return member_id;
+	@Override
+	public String toString() {
+		return "DetailSurveyVO [detail_id=" + detail_id + ", detail_content=" + detail_content + ", detail_answer="
+				+ detail_answer + ", main_id=" + main_id + ", detail_category=" + detail_category + "]";
 	}
-	public void setMember_id(int member_id) {
-		this.member_id = member_id;
-	}
+
 	
 	
 	

@@ -29,7 +29,8 @@ body {
 }
 form {
   background: #ebecf0;
-  display: flex;
+  text-align:center;
+/*   align-items: center; */
   flex-direction: column;
   padding: 0 50px;
   height: 100%;

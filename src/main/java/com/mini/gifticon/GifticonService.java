@@ -38,11 +38,9 @@ public class GifticonService {
 		int memberId = memberInfo.getMember_id();
 		int price = goodsInfo.getGoods_price();
 		int haveMoney = memberInfo.getMember_money();
-		
 		if(haveMoney >= price) {
 			gifticonvo.setMember_id(memberId);
 			gifticonDAO.gifticonUpdate(gifticonvo);
-			
 			haveMoney = haveMoney - price;
 			memberInfo.setMember_money(haveMoney);
 			memberdao.memberInfoUpdate(memberInfo);

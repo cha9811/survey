@@ -107,12 +107,11 @@ public class MemberService {
 		memberDAO.memberInfoUpdate(vo);
 	}
 
-	public int sendIDEmail(String email) { // 난수의 범위 111111 ~ 999999 (6자리 난수)
+	public int sendIDEmail(String email) { 
 		Random random = new Random();
 		int checkNum = random.nextInt(888888) + 111111;
-		// 이메일 보낼 양식
 		String toMail = email;
-		String title = "회원가입 인증 이메일 입니다.";
+		String title = "아이디 찾기 인증 이메일 입니다.";
 		String content = "인증 코드는 " + checkNum + " 입니다." + "<br>" + "해당 인증 코드를 인증 코드 확인란에 기입하여 주세요.";
 		try {
 			MimeMessage message = mailSender.createMimeMessage(); 
@@ -129,7 +128,6 @@ public class MemberService {
 	}
 
 	public String sendID(String email) { 
-
 		MemberVO memberVO = memberDAO.memberInfoByEmail(email);
 		String user_name = memberVO.getMember_name();
 		email = email + "@naver.com";

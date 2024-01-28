@@ -11,18 +11,10 @@ public class MemberVO {
 	private String member_job;
 	private String member_local;
 	private int member_money;
-	private String member_coupon;
 	private String member_email;
 	private String member_role;
 
-	@Override
-	public String toString() {
-		return "MemberVO [member_id=" + member_id + ", member_name=" + member_name + ", member_password="
-				+ member_password + ", member_nickname=" + member_nickname + ", member_age=" + member_age
-				+ ", member_phone=" + member_phone + ", member_job=" + member_job + ", member_local=" + member_local
-				+ ", member_money=" + member_money + ", member_coupon=" + member_coupon + ", member_email="
-				+ member_email + ", member_role=" + member_role + "]";
-	}
+	
 	public String getMember_role() {
 		return member_role;
 	}
@@ -90,12 +82,14 @@ public class MemberVO {
 	public void setMember_money(int member_money) {
 		this.member_money = member_money;
 	}
-	public String getMember_coupon() {
-		return member_coupon;
+	@Override
+	public String toString() {
+		return "MemberVO [member_id=" + member_id + ", member_name=" + member_name + ", member_password="
+				+ member_password + ", member_nickname=" + member_nickname + ", member_age=" + member_age
+				+ ", member_phone=" + member_phone + ", member_job=" + member_job + ", member_local=" + member_local
+				+ ", member_money=" + member_money + ", member_email=" + member_email + ", member_role=" + member_role
+				+ "]";
 	}
-	public void setMember_coupon(String member_coupon) {
-		this.member_coupon = member_coupon;
-	}
-	
+
 	
 }

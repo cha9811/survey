@@ -39,7 +39,6 @@
 		=#{member_id}
 	</select>
 
-	<!-- GPT -->
 	<select id="getMemberByName" parameterType="String"
 		resultType="memberVO">
 		select * from member where member_name =#{member_name}

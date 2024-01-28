@@ -18,7 +18,7 @@
 			return false;
 		}
 
-		//TODO: 현재 미작동
+		
 		if (validationFails) {
 			alert("계정이 올바르지 않습니다."); // Display the popup
 			return false; // Prevent form submission
@@ -30,13 +30,13 @@
 </script>
 </head>
 <body>
-	<h1>요목조목에 오신걸 환영합니다.</h1>
+
 	<div class="wrapper">
 		<div class="container">
 			<div class="sign-in-container">
-	<h2 style="margin-left: 80px;">로그인페이지</h2>
+	<h2 style="margin-left: 120px; margin-top: 100px;">로그인페이지</h2>
 				<form action="login" method="post"
-					onsubmit="return submitLoginForm();">
+					onsubmit="return submitLoginForm();" style="margin-left: 40px;">
 					<table>
 						<tr>
 							<td>아이디<br> <input name="member_name"
@@ -53,7 +53,7 @@
 								value="${_csrf.token}" /></td>
 						</tr>
 					</table>
-					<button class="form_btn">로그인하기</button>
+					<button class="form_btn" style="margin-left:-10px;">로그인하기</button>
 				</form>
 					
 				
@@ -64,7 +64,7 @@
 					<p>당신의 정보를 더욱 가치있게</p>			
 					
 					<a href="/survey/signUpPage" class="button-link"><button id="signUp" class="overlay_btn">회원가입</button></a>
-					<a href="/survey/findMemberPage" class="button-link"><button>ID/비밀번호 찾기</button></a>
+					<a href="/survey/findMemberPage" class="button-link"><button class="overlay_btn">ID/비밀번호 찾기</button></a>
 				</div>
 			</div>
 		</div>

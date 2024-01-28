@@ -97,6 +97,7 @@
 				</tr>
 			</c:forEach>
 		</table>
+		<hr>
 		<table class="board-table">
 			<tbody id="newDetailArea"></tbody>
 		</table>
